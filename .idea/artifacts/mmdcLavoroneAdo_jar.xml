@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="mmdcLavoroneAdo:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/mmdcLavoroneAdo_jar</output-path>
+    <root id="archive" name="mmdcLavoroneAdo.jar">
+      <element id="module-output" name="mmdcLavoroneAdo" />
+    </root>
+  </artifact>
+</component>
