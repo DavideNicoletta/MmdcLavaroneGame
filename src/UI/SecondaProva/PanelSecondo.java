@@ -19,7 +19,7 @@ public class PanelSecondo extends JPanel {
         setLayout(new BorderLayout());
         setBackground(Color.black);
 
-        secondaProva = new JLabel("<html>Risolvi l'equazione di secondo grado <br> 2x – (3√2)x + 4 = 0</html>");
+        secondaProva = new JLabel("<html>Risolvi l'equazione di secondo grado <br> 2x – (3sqrt(2))x + 4 = 0</html>");
         JPanel rispostaPanel = new JPanel();
         rispostaPanel.setBackground(Color.black);
         rispostaPanel.setLayout(new FlowLayout());
@@ -57,15 +57,11 @@ public class PanelSecondo extends JPanel {
                 UI.put("Panel.background",Color.black);
                 switch (indizioCounter){
                     case 0:
-                        JOptionPane.showMessageDialog(null, "Indizo 1");
+                        JOptionPane.showMessageDialog(null, "sqrt(2) = √2");
                         indizioCounter++;
                         break;
                     case 1:
-                        JOptionPane.showMessageDialog(null, "Indizio 2");
-                        indizioCounter++;
-                        break;
-                    case 2:
-                        JOptionPane.showMessageDialog(null, "Indizio 3");
+                        JOptionPane.showMessageDialog(null, "Scrivi le radici come sqrt(x), dove x è il numero che vuoi mettere");
                         indizioCounter++;
                         break;
                     default:
@@ -84,7 +80,12 @@ public class PanelSecondo extends JPanel {
         invia.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                UIManager UI=new UIManager();
+                UI.put("OptionPane.background",Color.black);
+                UI.put("OptionPane.messageForeground", Color.green);
+                UI.put("Panel.background",Color.black);
                 if(secondaProvaModel.checkOk(write.getText())){
+
                     JOptionPane.showMessageDialog(null, "<html>Risposta esatta, l'indizio e': L'albero e' verde!. <br> Quando sei pronto clicca OK</html>");
                     setVisible(false);
                     rispostaPanel.setVisible(false);

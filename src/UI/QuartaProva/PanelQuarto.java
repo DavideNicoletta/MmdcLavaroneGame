@@ -56,22 +56,7 @@ public class PanelQuarto extends JPanel {
                 UI.put("OptionPane.background",Color.black);
                 UI.put("OptionPane.messageForeground", Color.green);
                 UI.put("Panel.background",Color.black);
-                switch (indizioCounter){
-                    case 0:
-                        JOptionPane.showMessageDialog(null, "Indizo 1");
-                        indizioCounter++;
-                        break;
-                    case 1:
-                        JOptionPane.showMessageDialog(null, "Indizio 2");
-                        indizioCounter++;
-                        break;
-                    case 2:
-                        JOptionPane.showMessageDialog(null, "Indizio 3");
-                        indizioCounter++;
-                        break;
-                    default:
-                        JOptionPane.showMessageDialog(null, "Indizi finiti");
-                }
+                JOptionPane.showMessageDialog(null, "Non ci sono indizi, conta!");
 
             }
         });
@@ -83,6 +68,10 @@ public class PanelQuarto extends JPanel {
         invia.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                UIManager UI=new UIManager();
+                UI.put("OptionPane.background",Color.black);
+                UI.put("OptionPane.messageForeground", Color.green);
+                UI.put("Panel.background",Color.black);
                 if(quartaProvaModel.checkOK(write.getText())){
                     JOptionPane.showMessageDialog(null, "<html>Risposta esatta, l'indizio e': Guarda dentro l'armadio <br> Quando sei pronto clicca OK</html>");
                     setVisible(false);

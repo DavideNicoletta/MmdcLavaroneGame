@@ -6,6 +6,6 @@ public class QuintaProvaModel {
     }
 
     public boolean checkOK(String string){
-        return string.equalsIgnoreCase("sinistra");
+        return string.toLowerCase().contains("sinistra");
     }
 }

@@ -6,10 +6,6 @@ public class QuartaProvaModel {
     }
 
     public boolean checkOK(String string){
-        if(string.equals("100")){
-            return true;
-        }else{
-            return false;
-        }
+        return string.toLowerCase().contains("100");
     }
 }

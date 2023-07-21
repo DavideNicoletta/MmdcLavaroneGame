@@ -20,7 +20,7 @@ public class PanelSesto extends JPanel {
         setLayout(new BorderLayout());
         setBackground(Color.black);
 
-        sestaProva = new JLabel("<html>Cosa c'è alla fine dell'arcobaleno, <br>al centro dell'atomo e all'inizio dell'oceano?</thml>");
+        sestaProva = new JLabel("<html>Cosa c'è alla epilogo dell'arcobaleno, <br>al cuore dell'atomo e al principio dell'oceano?</thml>");
         JPanel rispostaPanel = new JPanel();
         rispostaPanel.setBackground(Color.black);
         rispostaPanel.setLayout(new FlowLayout());
@@ -56,22 +56,7 @@ public class PanelSesto extends JPanel {
                 UI.put("OptionPane.background",Color.black);
                 UI.put("OptionPane.messageForeground", Color.green);
                 UI.put("Panel.background",Color.black);
-                switch (indizioCounter){
-                    case 0:
-                        JOptionPane.showMessageDialog(null, "Indizo 1");
-                        indizioCounter++;
-                        break;
-                    case 1:
-                        JOptionPane.showMessageDialog(null, "Indizio 2");
-                        indizioCounter++;
-                        break;
-                    case 2:
-                        JOptionPane.showMessageDialog(null, "Indizio 3");
-                        indizioCounter++;
-                        break;
-                    default:
-                        JOptionPane.showMessageDialog(null, "Indizi finiti");
-                }
+                JOptionPane.showMessageDialog(null, "Non ci sono indizi, ragiona!");
 
             }
         });
@@ -83,6 +68,10 @@ public class PanelSesto extends JPanel {
         invia.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                UIManager UI=new UIManager();
+                UI.put("OptionPane.background",Color.black);
+                UI.put("OptionPane.messageForeground", Color.green);
+                UI.put("Panel.background",Color.black);
                 if(sestaProvaModel.checkOK(write.getText())){
                     JOptionPane.showMessageDialog(null, "<html>Risposta esatta, l'indizio e': Il Cielo e' Blu!. <br> Quando sei pronto clicca OK</html>");
                     setVisible(false);

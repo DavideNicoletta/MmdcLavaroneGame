@@ -59,15 +59,15 @@ public class PanelTerzo extends JPanel {
                 UI.put("Panel.background",Color.black);
                 switch (indizioCounter){
                     case 0:
-                        JOptionPane.showMessageDialog(null, "Indizo 1");
+                        JOptionPane.showMessageDialog(null, "Spesso sono tondo");
                         indizioCounter++;
                         break;
                     case 1:
-                        JOptionPane.showMessageDialog(null, "Indizio 2");
+                        JOptionPane.showMessageDialog(null, "A volte vengo anche portato in giro");
                         indizioCounter++;
                         break;
                     case 2:
-                        JOptionPane.showMessageDialog(null, "Indizio 3");
+                        JOptionPane.showMessageDialog(null, "Il mio passato è analogico, il mio futuro digitale");
                         indizioCounter++;
                         break;
                     default:
@@ -84,7 +84,12 @@ public class PanelTerzo extends JPanel {
         invia.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                UIManager UI=new UIManager();
+                UI.put("OptionPane.background",Color.black);
+                UI.put("OptionPane.messageForeground", Color.green);
+                UI.put("Panel.background",Color.black);
                 if(terzaProvaModel.checkOK(write.getText())){
+
                     JOptionPane.showMessageDialog(null, "<html>Risposta esatta, l'indizio e': Indizio  III - 42. <br> Quando sei pronto clicca OK</html>");
                     setVisible(false);
                     rispostaPanel.setVisible(false);

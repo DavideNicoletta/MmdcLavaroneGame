@@ -6,10 +6,6 @@ public class SestaProvaModel {
     }
 
     public boolean checkOK(String string){
-        if(string.toLowerCase().equals("o") || string.toLowerCase().equals("lettera o")){
-            return true;
-        }else{
-            return false;
-        }
+        return string.toLowerCase().contains("o");
     }
 }

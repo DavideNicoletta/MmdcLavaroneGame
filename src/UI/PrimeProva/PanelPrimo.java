@@ -19,11 +19,13 @@ public class PanelPrimo extends JPanel {
     int indizioCounter = 0;
     JButton indizi;
 
+    UIManager UI;
+
     InviaListener inviaListener;
     public PanelPrimo(){
         setLayout(new BorderLayout());
         setBackground(Color.black);
-
+        UI = new UIManager();
         PrimaProvaModel primaProvaModel = new PrimaProvaModel();
         invia = new JButton("Invia");
         invia.setBackground(Color.black);
@@ -79,21 +81,16 @@ public class PanelPrimo extends JPanel {
         indizi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UIManager UI=new UIManager();
                 UI.put("OptionPane.background",Color.black);
                 UI.put("OptionPane.messageForeground", Color.green);
                 UI.put("Panel.background",Color.black);
                 switch (indizioCounter){
                     case 0:
-                        JOptionPane.showMessageDialog(null, "Indizo 1");
+                        JOptionPane.showMessageDialog(null, "E' spesso solitario");
                         indizioCounter++;
                         break;
                     case 1:
-                        JOptionPane.showMessageDialog(null, "Indizio 2");
-                        indizioCounter++;
-                        break;
-                    case 2:
-                        JOptionPane.showMessageDialog(null, "Indizio 3");
+                        JOptionPane.showMessageDialog(null, "Piccolo pennuto marroncino");
                         indizioCounter++;
                         break;
                     default:
@@ -108,7 +105,11 @@ public class PanelPrimo extends JPanel {
         invia.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                UI.put("OptionPane.background",Color.black);
+                UI.put("OptionPane.messageForeground", Color.green);
+                UI.put("Panel.background",Color.black);
                 if(primaProvaModel.checkRisposta(write.getText())){
+
                     JOptionPane.showMessageDialog(null, "<html>Risposta esatta, l'indizio e': Guarda sotto il materasso!. <br> Qaundo sei pronto clicca OK</html>");
                     setVisible(false);
                     rispostaPanel.setVisible(false);
