@@ -126,7 +126,7 @@ public class PanelPrimo extends JPanel {
 
                     if(primaProvaModel.checkRisposta(write.getText())){
 
-                        JOptionPane.showMessageDialog(null, "<html>Risposta esatta, l'indizio e': Guarda sotto il materasso!. <br> Qaundo sei pronto clicca OK</html>");
+                        JOptionPane.showMessageDialog(null, "<html>Risposta esatta, l'indizio e': Guarda sotto il materasso!. <br> Quando sei pronto clicca OK</html>");
                         setVisible(false);
                         rispostaPanel.setVisible(false);
                         InviaEvent inviaEvent = new InviaEvent(e, true);

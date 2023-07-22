@@ -82,11 +82,25 @@ public class Launch extends JFrame {
         panelQuinto = new PanelQuinto();
         panelSesto = new PanelSesto();
 
+        panelSesto.setInviaListener(new InviaListener() {
+            @Override
+            public void checkInviaEvent(InviaEvent inviaEvent) {
+                JLabel fine = new JLabel("Avete concluso le prove");
+                fine.setForeground(Color.green);
+                fine.setBackground(Color.black);
+                add(fine, BorderLayout.CENTER);
+            }
+        });
+
         panelQuinto.setInviaListener(new InviaListener() {
             @Override
             public void checkInviaEvent(InviaEvent inviaEvent) {
                 if(inviaEvent.isCheckOk()){
                     panelPrimo.setVisible(false);
+                    JLabel fine = new JLabel("Avete concluso le prove");
+                    fine.setForeground(Color.green);
+                    fine.setBackground(Color.black);
+                    add(fine, BorderLayout.CENTER);
 
                 }else{
 

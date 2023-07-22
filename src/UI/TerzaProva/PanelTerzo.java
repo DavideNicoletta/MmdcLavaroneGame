@@ -102,7 +102,7 @@ public class PanelTerzo extends JPanel {
                     answerCounter++;
                     if(terzaProvaModel.checkOK(write.getText())){
 
-                        JOptionPane.showMessageDialog(null, "<html>Risposta esatta, l'indizio e': Indizio  III - 42. <br> Quando sei pronto clicca OK</html>");
+                        JOptionPane.showMessageDialog(null, "<html>Risposta esatta, l'indizio e': Indizio  III: 42. <br> Quando sei pronto clicca OK</html>");
                         setVisible(false);
                         rispostaPanel.setVisible(false);
                         InviaEvent inviaEvent = new InviaEvent(e, true);
