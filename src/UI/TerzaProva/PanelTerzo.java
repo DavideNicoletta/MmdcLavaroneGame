@@ -14,7 +14,7 @@ public class PanelTerzo extends JPanel {
     JTextField write;
     JButton invia;
     InviaListener inviaListener;
-
+    int answerCounter = 0;
     int indizioCounter = 0;
     JButton indizi;
     public PanelTerzo(){
@@ -57,22 +57,31 @@ public class PanelTerzo extends JPanel {
                 UI.put("OptionPane.background",Color.black);
                 UI.put("OptionPane.messageForeground", Color.green);
                 UI.put("Panel.background",Color.black);
-                switch (indizioCounter){
-                    case 0:
-                        JOptionPane.showMessageDialog(null, "Spesso sono tondo");
-                        indizioCounter++;
-                        break;
-                    case 1:
-                        JOptionPane.showMessageDialog(null, "A volte vengo anche portato in giro");
-                        indizioCounter++;
-                        break;
-                    case 2:
-                        JOptionPane.showMessageDialog(null, "Il mio passato è analogico, il mio futuro digitale");
-                        indizioCounter++;
-                        break;
-                    default:
-                        JOptionPane.showMessageDialog(null, "Indizi finiti");
+
+                if(answerCounter == 3){
+                    switch (indizioCounter){
+                        case 0:
+                            JOptionPane.showMessageDialog(null, "Spesso sono tondo");
+                            answerCounter = 0;
+                            indizioCounter++;
+                            break;
+                        case 1:
+                            JOptionPane.showMessageDialog(null, "A volte vengo anche portato in giro");
+                            answerCounter = 0;
+                            indizioCounter++;
+                            break;
+                        case 2:
+                            JOptionPane.showMessageDialog(null, "Il mio passato è analogico, il mio futuro digitale");
+                            answerCounter = 0;
+                            indizioCounter++;
+                            break;
+                        default:
+                            JOptionPane.showMessageDialog(null, "Indizi finiti");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Non ci sono indizi per ora!");
                 }
+
 
             }
         });
@@ -88,18 +97,26 @@ public class PanelTerzo extends JPanel {
                 UI.put("OptionPane.background",Color.black);
                 UI.put("OptionPane.messageForeground", Color.green);
                 UI.put("Panel.background",Color.black);
-                if(terzaProvaModel.checkOK(write.getText())){
 
-                    JOptionPane.showMessageDialog(null, "<html>Risposta esatta, l'indizio e': Indizio  III - 42. <br> Quando sei pronto clicca OK</html>");
-                    setVisible(false);
-                    rispostaPanel.setVisible(false);
-                    InviaEvent inviaEvent = new InviaEvent(e, true);
-                    if(inviaListener != null){
-                        inviaListener.checkInviaEvent(inviaEvent);
+                if(!write.getText().isEmpty()){
+                    answerCounter++;
+                    if(terzaProvaModel.checkOK(write.getText())){
+
+                        JOptionPane.showMessageDialog(null, "<html>Risposta esatta, l'indizio e': Indizio  III - 42. <br> Quando sei pronto clicca OK</html>");
+                        setVisible(false);
+                        rispostaPanel.setVisible(false);
+                        InviaEvent inviaEvent = new InviaEvent(e, true);
+                        if(inviaListener != null){
+                            inviaListener.checkInviaEvent(inviaEvent);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null, "<html>Risposta errata.<br> Riprova</html>");
                     }
                 }else{
-                    JOptionPane.showMessageDialog(null, "<html>Risposta errata.<br> Riprova</html>");
+                    JOptionPane.showMessageDialog(null, "Risposta vuota!");
                 }
+
+
             }
         });
 

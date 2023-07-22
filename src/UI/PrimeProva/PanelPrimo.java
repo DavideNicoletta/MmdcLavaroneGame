@@ -17,6 +17,7 @@ public class PanelPrimo extends JPanel {
     JPanel indizziPanel;
     //JLabel indizi;
     int indizioCounter = 0;
+    int answerCounter = 0;
     JButton indizi;
 
     UIManager UI;
@@ -81,21 +82,33 @@ public class PanelPrimo extends JPanel {
         indizi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+
                 UI.put("OptionPane.background",Color.black);
                 UI.put("OptionPane.messageForeground", Color.green);
                 UI.put("Panel.background",Color.black);
-                switch (indizioCounter){
-                    case 0:
-                        JOptionPane.showMessageDialog(null, "E' spesso solitario");
-                        indizioCounter++;
-                        break;
-                    case 1:
-                        JOptionPane.showMessageDialog(null, "Piccolo pennuto marroncino");
-                        indizioCounter++;
-                        break;
-                    default:
-                        JOptionPane.showMessageDialog(null, "Indizi finiti");
+
+                if(answerCounter == 3){
+                    switch (indizioCounter){
+                        case 0:
+                            JOptionPane.showMessageDialog(null, "E' spesso solitario");
+                            indizioCounter++;
+                            answerCounter = 0;
+                            break;
+                        case 1:
+                            JOptionPane.showMessageDialog(null, "Piccolo pennuto marroncino");
+                            indizioCounter++;
+                            answerCounter = 0;
+                            break;
+                        default:
+                            JOptionPane.showMessageDialog(null, "Indizi finiti");
+                            answerCounter = 0;
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Non ci sono indizi per ora!");
                 }
+
+
 
             }
         });
@@ -108,18 +121,25 @@ public class PanelPrimo extends JPanel {
                 UI.put("OptionPane.background",Color.black);
                 UI.put("OptionPane.messageForeground", Color.green);
                 UI.put("Panel.background",Color.black);
-                if(primaProvaModel.checkRisposta(write.getText())){
+                if(!write.getText().isEmpty()){
+                    answerCounter++;
 
-                    JOptionPane.showMessageDialog(null, "<html>Risposta esatta, l'indizio e': Guarda sotto il materasso!. <br> Qaundo sei pronto clicca OK</html>");
-                    setVisible(false);
-                    rispostaPanel.setVisible(false);
-                    InviaEvent inviaEvent = new InviaEvent(e, true);
-                    if(inviaListener != null){
-                        inviaListener.checkInviaEvent(inviaEvent);
+                    if(primaProvaModel.checkRisposta(write.getText())){
+
+                        JOptionPane.showMessageDialog(null, "<html>Risposta esatta, l'indizio e': Guarda sotto il materasso!. <br> Qaundo sei pronto clicca OK</html>");
+                        setVisible(false);
+                        rispostaPanel.setVisible(false);
+                        InviaEvent inviaEvent = new InviaEvent(e, true);
+                        if(inviaListener != null){
+                            inviaListener.checkInviaEvent(inviaEvent);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null, "<html>Risposta errata.<br> Riprova</html>");
                     }
                 }else{
-                    JOptionPane.showMessageDialog(null, "<html>Risposta errata.<br> Riprova</html>");
+                    JOptionPane.showMessageDialog(null, "Risposta vuota!");
                 }
+
             }
         });
 
